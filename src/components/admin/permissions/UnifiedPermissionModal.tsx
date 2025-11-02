@@ -720,6 +720,61 @@ export default function UnifiedPermissionModal({
 }
 
 /**
+ * Role Details Form Component (for role creation/editing)
+ */
+const RoleDetailsForm = memo(function RoleDetailsForm({
+  roleName,
+  roleDescription,
+  onRoleNameChange,
+  onRoleDescriptionChange,
+  isMobile,
+}: {
+  roleName: string
+  roleDescription: string
+  onRoleNameChange: (name: string) => void
+  onRoleDescriptionChange: (description: string) => void
+  isMobile: boolean
+}) {
+  return (
+    <div className="h-full overflow-y-auto p-4 md:p-6 bg-white">
+      <div className="space-y-4 md:space-y-6">
+        <div className="space-y-2">
+          <Label htmlFor="role-name" className="text-sm font-medium">Role Name *</Label>
+          <Input
+            id="role-name"
+            placeholder="e.g., Senior Accountant"
+            value={roleName}
+            onChange={(e) => onRoleNameChange(e.target.value)}
+            className="text-sm"
+          />
+          <p className="text-xs text-gray-500">This will be displayed to users when assigning roles</p>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="role-description" className="text-sm font-medium">Description *</Label>
+          <Textarea
+            id="role-description"
+            placeholder="Describe the purpose and responsibilities of this role"
+            value={roleDescription}
+            onChange={(e) => onRoleDescriptionChange(e.target.value)}
+            rows={4}
+            className="text-sm"
+          />
+          <p className="text-xs text-gray-500">Help administrators understand the purpose of this role</p>
+        </div>
+
+        <div className="p-3 md:p-4 rounded-lg bg-blue-50 border border-blue-200">
+          <p className="text-xs md:text-sm text-blue-900 font-medium mb-2">Next Step</p>
+          <p className="text-xs md:text-sm text-blue-800">
+            Switch to the "Permissions" tab to select which permissions this role should have.
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+})
+
+/**
  * Role Selection Tab Content
  */
 const RoleSelectionContent = memo(function RoleSelectionContent({
