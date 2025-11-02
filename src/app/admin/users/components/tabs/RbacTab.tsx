@@ -6,6 +6,7 @@ import { RoleFormModal } from '@/components/admin/shared/RoleFormModal'
 import { Button } from '@/components/ui/button'
 import { Plus, Edit3, Trash2, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { globalEventEmitter } from '@/lib/event-emitter'
 
 interface Role {
   id: string
