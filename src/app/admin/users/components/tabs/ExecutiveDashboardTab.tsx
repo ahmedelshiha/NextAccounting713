@@ -19,7 +19,7 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
-import { useDashboardMetrics, useDashboardRecommendations, useDashboardAnalytics } from '../../hooks/useDashboardMetrics'
+import { useDashboardMetrics, useDashboardRecommendations, useDashboardAnalytics, useFilterUsers } from '../../hooks'
 import { UserItem } from '../../contexts/UsersContextProvider'
 import { toast } from 'sonner'
 
