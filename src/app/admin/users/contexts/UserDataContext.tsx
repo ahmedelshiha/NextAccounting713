@@ -1,7 +1,8 @@
 'use client'
 
-import React, { createContext, useContext, useState, useCallback, useMemo, ReactNode } from 'react'
+import React, { createContext, useContext, useState, useCallback, useMemo, ReactNode, useEffect } from 'react'
 import { useUnifiedUserService } from '../hooks/useUnifiedUserService'
+import { useUserManagementRealtime } from '../hooks/useUserManagementRealtime'
 
 // Types
 export interface UserStats {
