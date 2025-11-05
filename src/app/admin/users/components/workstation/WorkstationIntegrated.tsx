@@ -222,7 +222,6 @@ export function WorkstationIntegrated({
           isOpen={workstationContext.insightsPanelOpen}
           onClose={() => workstationContext.setInsightsPanelOpen(false)}
           stats={stats}
-          analyticsData={metricsData}
         />
       </Suspense>
     </div>
