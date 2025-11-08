@@ -96,15 +96,17 @@ export default function UsersTableWrapper({
 
   return (
     <>
-      <UsersTable
-        users={filteredUsers}
-        isLoading={context.isLoading || context.usersLoading}
-        onViewProfile={handleViewProfile}
-        onRoleChange={handleRoleChange}
-        selectedUserIds={selectedUserIds}
-        onSelectUser={handleSelectUser}
-        onSelectAll={handleSelectAll}
-      />
+      <div className="flex flex-col h-full overflow-hidden">
+        <UsersTable
+          users={filteredUsers}
+          isLoading={context.isLoading || context.usersLoading}
+          onViewProfile={handleViewProfile}
+          onRoleChange={handleRoleChange}
+          selectedUserIds={selectedUserIds}
+          onSelectUser={handleSelectUser}
+          onSelectAll={handleSelectAll}
+        />
+      </div>
 
       {/* User Profile Dialog - gets state from context */}
       <UserProfileDialog />
