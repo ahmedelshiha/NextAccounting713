@@ -24,7 +24,6 @@ export default function UsersTableWrapper({
   filters = {}
 }: UsersTableWrapperProps) {
   const context = useUsersContext()
-  const [selectedUser, setSelectedUser] = React.useState<UserItem | null>(null)
 
   // Filter users based on provided filters
   const filteredUsers = useMemo(() => {
@@ -83,8 +82,9 @@ export default function UsersTableWrapper({
   )
 
   const handleViewProfile = useCallback((user: UserItem) => {
-    setSelectedUser(user)
-  }, [])
+    context.setSelectedUser(user)
+    context.setProfileOpen(true)
+  }, [context])
 
   const handleRoleChange = useCallback(
     async (userId: string, newRole: UserItem['role']) => {
