@@ -310,7 +310,7 @@ export const POST = withTenantContext(async (request: NextRequest) => {
     })
 
     
-    await AuditLogService.createAuditLog({ tenantId: tenantId!, action: 'user.create', userId: newUser.id, metadata: { name, email, role } })
+    await AuditLogService.createAuditLog({ tenantId, action: 'user.create', userId: newUser.id, metadata: { name, email, role } })
 
     return NextResponse.json(newUser, { status: 201 })
   } catch (error: any) {
