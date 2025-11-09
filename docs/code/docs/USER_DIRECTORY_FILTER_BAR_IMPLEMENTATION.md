@@ -44,12 +44,96 @@ Implement a minimal, Excel-style filter bar above the User Directory table that 
 
 ---
 
+## 🏢 Feature Comparison: Oracle/SAP vs Current Plan
+
+### Enterprise System Features Analysis
+
+| Feature | Oracle Cloud | SAP Analytics | Current Plan | Priority |
+|---------|--------------|---------------|--------------|----------|
+| **Basic Filters** | ✅ | ✅ | ✅ MVP | Must Have |
+| Text Search (name/email/phone) | ✅ | ✅ | ✅ MVP | Must Have |
+| Dropdown Filters (Role/Status) | ✅ | ✅ | ✅ MVP | Must Have |
+| Multi-select Filters | ✅ | ✅ | ❌ V2 | High |
+| Advanced Search Operators | ✅ | ✅ | ❌ V2 | High |
+| Date Range Filters | ✅ | ✅ | ❌ V2 | High |
+| **Filter Management** | | | | |
+| Active Filter Pills/Badges | ✅ | ✅ | ❌ V2 | High |
+| Filter History/Recents | ✅ | ✅ | ❌ V3 | Medium |
+| Save Filter Presets | ✅ | ✅ | ❌ V3 | Medium |
+| Quick Filter Templates | ✅ | ✅ | ❌ V3 | Medium |
+| **Query Builder** | | | | |
+| Advanced Query Builder | ✅ | ✅ | ❌ V3 | Medium |
+| AND/OR Logic | ✅ | ✅ | ❌ V3 | Medium |
+| Condition Groups | ✅ | ✅ | ❌ V3 | Medium |
+| **Selection & Bulk Ops** | | | | |
+| Select All Visible | ✅ | ✅ | ✅ MVP | Must Have |
+| Multi-select Rows | ✅ | ✅ | ✅ MVP | Must Have |
+| Bulk Actions Panel | ✅ | ✅ | ❌ V2 | High |
+| Select/Deselect by Filter | ✅ | ✅ | ❌ V2 | High |
+| **Column Management** | | | | |
+| Column Visibility Toggle | ✅ | ✅ | ❌ V2 | High |
+| Column Reordering | ✅ | ✅ | ❌ V3 | Medium |
+| Column Sorting | ✅ | ✅ | ❌ V2 | High |
+| **Data Export & Reporting** | | | | |
+| Export Filtered Results | ✅ | ✅ | ❌ V2 | High |
+| Export Selected Rows | ✅ | ✅ | ❌ V2 | High |
+| Export Formats (CSV, Excel, PDF) | ✅ | ✅ | ❌ V2 | High |
+| **Performance & UI** | | | | |
+| Result Counter | ✅ | ✅ | ✅ MVP | Must Have |
+| Filtered Indicator Badge | ✅ | ✅ | ❌ V2 | High |
+| Loading States | ✅ | ✅ | ✅ MVP | Must Have |
+| Keyboard Shortcuts | ✅ | ✅ | ❌ V3 | Medium |
+| Autocomplete Search | ✅ | ✅ | ❌ V2 | Medium |
+| **Accessibility & Help** | | | | |
+| Tooltips & Help Text | ✅ | ✅ | ❌ V2 | Medium |
+| ARIA Labels | ✅ | ✅ | ✅ MVP | Must Have |
+| Filter Syntax Help | ✅ | ✅ | ❌ V3 | Low |
+| **Personalization** | | | | |
+| Save Default Filters | ✅ | ✅ | ❌ V3 | Medium |
+| Remember Column Order | ✅ | ✅ | ❌ V3 | Medium |
+| Persist Filter State | ✅ | ✅ | ❌ V2 | High |
+
+### Missing Features to Implement
+
+**Phase 2 (MVP - Current Plan) ✅**
+- Basic text search
+- Simple role/status dropdowns
+- Select All functionality
+- Result counter
+- Accessibility
+
+**Phase 2+ (Enterprise Enhancements) 🎯**
+- **Multi-select filters** (select multiple roles/statuses)
+- **Advanced search operators** (exact match, contains, starts with, regex)
+- **Filter pills/badges** (visual display of active filters)
+- **Bulk actions panel** (visible when rows selected)
+- **Column visibility toggle**
+- **Autocomplete search** (suggestions based on data)
+- **Date range filters** (for created date, last login, etc.)
+- **Export options** (CSV, Excel)
+- **Filter persistence** (localStorage or user preferences)
+- **Filter history** (recently used filters)
+- **Smart filter suggestions** (based on common searches)
+
+**Phase 3+ (Advanced Enterprise Features) 🚀**
+- Advanced Query Builder (Visual filter composer)
+- Save filter presets/templates
+- AND/OR complex logic
+- Keyboard shortcuts (Ctrl+F, Ctrl+A, etc.)
+- Saved searches/filter templates
+- Column reordering & resizing
+- Filter undo/redo
+- Batch operations with progress tracking
+- Filter validation & error messages
+
+---
+
 ## 🏗️ Technical Architecture
 
 ### Data Flow Diagram
 
 ```
-┌─────────────────────────────────────────┐
+┌────────────────────────────────────��────┐
 │   UsersTableWrapper (Main Container)    │
 ├────────────────────────���────────────────┤
 │                                         │
@@ -68,7 +152,7 @@ Implement a minimal, Excel-style filter bar above the User Directory table that 
 │  │  ├─ role: string | null         │   │
 │  │  ├─ status: string | null       │   │
 │  │  └─ filteredUsers: UserItem[]   │   │
-│  └─────────────────────────────────┘   │
+│  └────────────────────────���────────┘   │
 │            ↓                             │
 │  ┌─────────────────���───────────────┐   │
 │  │ UsersTable (Virtualized)        │   │
