@@ -448,6 +448,224 @@
   }
 }
 
+/* ============================================================================
+   BOTTOM SHEET - Mobile modal presentation
+   ============================================================================ */
+
+.mobile-bottom-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 40;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(2px);
+}
+
+.mobile-bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease-out;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+  /* Safe area support */
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  padding-left: max(0, env(safe-area-inset-left));
+  padding-right: max(0, env(safe-area-inset-right));
+}
+
+.mobile-bottom-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+/* Drag Handle Wrapper */
+.mobile-bottom-sheet-handle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mobile-bottom-sheet-handle-wrapper:active {
+  cursor: grabbing;
+}
+
+/* Drag Handle */
+.mobile-bottom-sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: #d1d5db;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-bottom-sheet-handle-wrapper:active .mobile-bottom-sheet-handle {
+  background: #9ca3af;
+}
+
+/* Header */
+.mobile-bottom-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.mobile-bottom-sheet-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  padding: 0;
+}
+
+/* Content */
+.mobile-bottom-sheet-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   QUICK FILTERS BOTTOM SHEET
+   ============================================================================ */
+
+.mobile-quick-filters-bottom-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-quick-filters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.mobile-quick-filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  min-height: 80px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.mobile-quick-filter-item:active {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.mobile-quick-filter-item svg {
+  width: 24px;
+  height: 24px;
+  color: #1f55d4;
+}
+
+/* Recent Filters Section */
+.mobile-recent-filters-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-recent-filters-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding: 0 0 0.5rem 0;
+}
+
+.mobile-recent-filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.mobile-recent-filter-button:active {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* Custom Filter Button */
+.mobile-custom-filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #1f55d4;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  min-height: 44px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.mobile-custom-filter-button:active {
+  background: #1e40af;
+}
+
 /* Dark mode support (optional, can be enabled later) */
 @media (prefers-color-scheme: dark) {
   .mobile-filter-bar {
