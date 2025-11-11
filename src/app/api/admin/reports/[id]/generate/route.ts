@@ -32,6 +32,12 @@ export const POST = withTenantContext(async (request: NextRequest, { params }: {
       return NextResponse.json({ error: 'Invalid export format. Supported: pdf, xlsx, csv, json' }, { status: 400 })
     }
 
+    // Cast report to ensure sections are properly typed
+    const typedReport = {
+      ...report,
+      sections: Array.isArray(report.sections) ? report.sections : []
+    }
+
     const execution = await prisma.reportExecution.create({
       data: {
         id: crypto.randomUUID(),
@@ -63,21 +69,15 @@ export const POST = withTenantContext(async (request: NextRequest, { params }: {
       }
 
       const reportData = {
-        columns: report.sections[0]?.columns || [],
+        columns: typedReport.sections[0]?.columns || [],
         rows: data,
         rowCount: data.length,
-        summary: calculateSummaryStats(data, report.sections[0]?.calculations || [])
+        summary: calculateSummaryStats(data, typedReport.sections[0]?.calculations || [])
       }
 
       let generatedContent = ''
       let contentType = 'text/html'
       let filename = `${report.name.replace(/\s+/g, '-')}-${Date.now()}`
-
-      // Cast report to ensure sections are properly typed
-      const typedReport = {
-        ...report,
-        sections: Array.isArray(report.sections) ? report.sections : []
-      }
 
       switch (format) {
         case 'pdf':
