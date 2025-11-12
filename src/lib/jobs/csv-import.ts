@@ -99,7 +99,7 @@ export async function initializeImportJob(
 
   try {
     const key = `${JOB_STATE_PREFIX}${jobId}`;
-    await redis.setex(key, IMPORT_TIMEOUT / 1000, JSON.stringify(state));
+    await redis.set(key, JSON.stringify(state), { ex: IMPORT_TIMEOUT / 1000 });
     
     // Enqueue job for processing
     await redis.lpush(JOB_QUEUE, JSON.stringify({
