@@ -178,7 +178,7 @@ export function TwoFactorSetup({ userId, onComplete }: TwoFactorSetupProps) {
 
                 <Alert>
                   <AlertDescription>
-                    Can't scan? Enter this code manually in your authenticator app:
+                    Can&apos;t scan? Enter this code manually in your authenticator app:
                   </AlertDescription>
                 </Alert>
 
@@ -217,7 +217,7 @@ export function TwoFactorSetup({ userId, onComplete }: TwoFactorSetupProps) {
           <CardContent className="space-y-4">
             <Alert>
               <AlertDescription>
-                We've sent a verification code to your registered phone number.
+                We&apos;ve sent a verification code to your registered phone number.
               </AlertDescription>
             </Alert>
 
@@ -236,7 +236,7 @@ export function TwoFactorSetup({ userId, onComplete }: TwoFactorSetupProps) {
             </div>
 
             <p className="text-xs text-gray-600">
-              Didn't receive the code? Check your spam folder or request a new code.
+              Didn&apos;t receive the code? Check your spam folder or request a new code.
             </p>
           </CardContent>
         </Card>
@@ -304,7 +304,7 @@ export function TwoFactorSetup({ userId, onComplete }: TwoFactorSetupProps) {
           <CardContent className="space-y-4">
             <Alert>
               <AlertDescription>
-                Two-factor authentication is now enabled on your account. You'll be asked to verify your identity on your next login.
+                Two-factor authentication is now enabled on your account. You&apos;ll be asked to verify your identity on your next login.
               </AlertDescription>
             </Alert>
 
